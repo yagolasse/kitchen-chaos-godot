@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bao6nveiv3es3"]
+
+[ext_resource type="PackedScene" uid="uid://6in08dlu3pqj" path="res://Assets/_Assets/Meshes/Cheese block.gltf" id="1_xrq4t"]
+
+[node name="CheeseBlock_Visual" type="Node3D"]
+
+[node name="Cheese block" parent="." instance=ExtResource("1_xrq4t")]
+transform = Transform3D(2.75, 0, 0, 0, 2.75, 0, 0, 0, 2.75, 0, 0.048, 0)
+
+[editable path="Cheese block"]

@@ -1,0 +1,207 @@
+[gd_scene load_steps=7 format=3 uid="uid://bac8tr1mvfw7a"]
+
+[ext_resource type="AnimationLibrary" uid="uid://2p61p0auwsst" path="res://Assets/_Assets/Animations/CuttingCounter.library.tres" id="1_c3oqj"]
+[ext_resource type="AnimationNodeBlendTree" uid="uid://bdf54gtvihhhp" path="res://Assets/_Assets/Animations/CuttingCounter.controller.tres" id="2_xh4ek"]
+[ext_resource type="Script" path="res://addons/unidot/runtime/anim_tree.gd" id="3_b701a"]
+[ext_resource type="ArrayMesh" uid="uid://cjajconjeal8o" path="res://Assets/_Assets/Meshes/Kitchen Counter.Counter.mesh" id="4_f42dt"]
+[ext_resource type="PackedScene" uid="uid://li0lu0sutudl" path="res://Assets/_Assets/Meshes/Chopping Board.gltf" id="5_3hw67"]
+[ext_resource type="PackedScene" uid="uid://clkamdymeha5g" path="res://Assets/_Assets/Meshes/Knife.gltf" id="6_7uvme"]
+
+[node name="CuttingCounter_Visual" type="Node3D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": ExtResource("1_c3oqj")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = ExtResource("2_xh4ek")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+script = ExtResource("3_b701a")
+metadata/Cut = false
+metadata/guid_fileid_to_animation_name = {
+"8e51262abb6b5fa4288bd453b7cfb7a6:7400000": "CuttingCounterIdle",
+"d7dc3ae032292ec4790e41ed41f65f1d:7400000": "CuttingCounterCut"
+}
+
+[node name="KitchenCounter" type="Node3D" parent="."]
+transform = Transform3D(1.65, 0, 0, 0, 1.5, 0, 0, 0, 1.65, 0, 0, 0)
+
+[node name="MeshRenderer" type="MeshInstance3D" parent="KitchenCounter"]
+editor_description = "[MeshRenderer 23::d72bee846803d074784ffb8f64e993ca:7398771634956237162]"
+mesh = ExtResource("4_f42dt")
+metadata/unidot_keys = {
+"m_AdditionalVertexStreams": [null, 0, null, null],
+"m_AutoUVMaxAngle": 89,
+"m_AutoUVMaxDistance": 0.5,
+"m_CastShadows": 1,
+"m_CorrespondingSourceObject": [null, 0, null, null],
+"m_DynamicOccludee": 1,
+"m_Enabled": 1,
+"m_GameObject": [null, 8101788021821549737, null, null],
+"m_IgnoreNormalsForChartDetection": 0,
+"m_ImportantGI": 0,
+"m_LightProbeUsage": 1,
+"m_LightProbeVolumeOverride": [null, 0, null, null],
+"m_LightmapParameters": [null, 0, null, null],
+"m_Materials": [[null, 592705374249410987, "e3d496c6436b0cf4a8eef3d8865e8639", 3]],
+"m_MinimumChartSize": 4,
+"m_MotionVectors": 1,
+"m_ObjectHideFlags": 0,
+"m_PrefabAsset": [null, 0, null, null],
+"m_PrefabInstance": [null, 0, null, null],
+"m_PreserveUVs": 0,
+"m_ProbeAnchor": [null, 0, null, null],
+"m_RayTraceProcedural": 0,
+"m_RayTracingMode": 2,
+"m_ReceiveGI": 1,
+"m_ReceiveShadows": 1,
+"m_ReflectionProbeUsage": 1,
+"m_RendererPriority": 0,
+"m_RenderingLayerMask": 1,
+"m_ScaleInLightmap": 1,
+"m_SelectedEditorRenderState": 3,
+"m_SortingLayer": 0,
+"m_SortingLayerID": 0,
+"m_SortingOrder": 0,
+"m_StaticBatchInfo": {
+"firstSubMesh": 0,
+"subMeshCount": 0
+},
+"m_StaticBatchRoot": [null, 0, null, null],
+"m_StaticShadowCaster": 0,
+"m_StitchLightmapSeams": 1
+}
+
+[node name="Chopping Board" parent="." instance=ExtResource("5_3hw67")]
+transform = Transform3D(1.82, 0, 0, 0, 1.82, 0, 0, 0, 1.82, 0, 1.291, 0)
+
+[node name="Knife" parent="." instance=ExtResource("6_7uvme")]
+transform = Transform3D(1.08258e-06, 0, -1.96, 0, 1.96, 0, 1.96, 0, 1.08258e-06, -0.327, 1.284, 0.503)
+
+[node name="Trail" type="Node3D" parent="Knife"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.021, 0, -0.34)
+
+[node name="TrailRenderer" type="Node" parent="Knife/Trail"]
+metadata/unidot_keys = {
+"m_ApplyActiveColorSpace": 1,
+"m_AutoUVMaxAngle": 89,
+"m_AutoUVMaxDistance": 0.5,
+"m_Autodestruct": 0,
+"m_CastShadows": 1,
+"m_CorrespondingSourceObject": [null, 0, null, null],
+"m_DynamicOccludee": 1,
+"m_Emitting": 1,
+"m_Enabled": 1,
+"m_GameObject": [null, 8150137353173463151, null, null],
+"m_IgnoreNormalsForChartDetection": 0,
+"m_ImportantGI": 0,
+"m_LightProbeUsage": 0,
+"m_LightProbeVolumeOverride": [null, 0, null, null],
+"m_LightmapParameters": [null, 0, null, null],
+"m_MaskInteraction": 0,
+"m_Materials": [[null, 2100000, "776cc3ef592a836479bea3edeefd0106", 2]],
+"m_MinVertexDistance": 0.005,
+"m_MinimumChartSize": 4,
+"m_MotionVectors": 0,
+"m_ObjectHideFlags": 0,
+"m_Parameters": {
+"alignment": 1,
+"colorGradient": {
+"atime0": 0,
+"atime1": 65535,
+"atime2": 0,
+"atime3": 0,
+"atime4": 0,
+"atime5": 0,
+"atime6": 0,
+"atime7": 0,
+"ctime0": 0,
+"ctime1": 65535,
+"ctime2": 0,
+"ctime3": 0,
+"ctime4": 0,
+"ctime5": 0,
+"ctime6": 0,
+"ctime7": 0,
+"key0": Color(1, 1, 1, 1),
+"key1": Color(1, 1, 1, 1),
+"key2": Color(0, 0, 0, 0),
+"key3": Color(0, 0, 0, 0),
+"key4": Color(0, 0, 0, 0),
+"key5": Color(0, 0, 0, 0),
+"key6": Color(0, 0, 0, 0),
+"key7": Color(0, 0, 0, 0),
+"m_ColorSpace": -1,
+"m_Mode": 0,
+"m_NumAlphaKeys": 2,
+"m_NumColorKeys": 2,
+"serializedVersion": 2
+},
+"generateLightingData": 0,
+"numCapVertices": 0,
+"numCornerVertices": 0,
+"serializedVersion": 3,
+"shadowBias": 0.5,
+"textureMode": 0,
+"textureScale": Vector2(1, 1),
+"widthCurve": {
+"m_Curve": [{
+"inSlope": 0,
+"inWeight": 0.333333,
+"outSlope": 0,
+"outWeight": 0.333333,
+"serializedVersion": 3,
+"tangentMode": 0,
+"time": 0,
+"value": "1",
+"weightedMode": 0
+}, {
+"inSlope": 0,
+"inWeight": 0,
+"outSlope": 0,
+"outWeight": 0,
+"serializedVersion": 3,
+"tangentMode": 0,
+"time": 1,
+"value": "0",
+"weightedMode": 0
+}],
+"m_PostInfinity": 2,
+"m_PreInfinity": 2,
+"m_RotationOrder": 4,
+"serializedVersion": 2
+},
+"widthMultiplier": 0.2
+},
+"m_PrefabAsset": [null, 0, null, null],
+"m_PrefabInstance": [null, 0, null, null],
+"m_PreserveUVs": 0,
+"m_PreviewTimeScale": 1,
+"m_ProbeAnchor": [null, 0, null, null],
+"m_RayTraceProcedural": 0,
+"m_RayTracingMode": 0,
+"m_ReceiveGI": 1,
+"m_ReceiveShadows": 1,
+"m_ReflectionProbeUsage": 0,
+"m_RendererPriority": 0,
+"m_RenderingLayerMask": 1,
+"m_ScaleInLightmap": 1,
+"m_SelectedEditorRenderState": 3,
+"m_SortingLayer": 0,
+"m_SortingLayerID": 0,
+"m_SortingOrder": 0,
+"m_StaticBatchInfo": {
+"firstSubMesh": 0,
+"subMeshCount": 0
+},
+"m_StaticBatchRoot": [null, 0, null, null],
+"m_StaticShadowCaster": 0,
+"m_StitchLightmapSeams": 1,
+"m_Time": 0.1,
+"serializedVersion": 3
+}
+
+[editable path="Chopping Board"]
+[editable path="Knife"]

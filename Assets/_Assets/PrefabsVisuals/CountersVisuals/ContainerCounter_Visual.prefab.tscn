@@ -1,0 +1,160 @@
+[gd_scene load_steps=9 format=3 uid="uid://bpfkx1bw51ism"]
+
+[ext_resource type="AnimationLibrary" uid="uid://bqvwldhtmvcur" path="res://Assets/_Assets/Animations/ContainerCounter.library.tres" id="1_hc1je"]
+[ext_resource type="AnimationNodeBlendTree" uid="uid://cug2xr27yaoxa" path="res://Assets/_Assets/Animations/ContainerCounter.controller.tres" id="2_dqsrr"]
+[ext_resource type="Script" path="res://addons/unidot/runtime/anim_tree.gd" id="3_175gp"]
+[ext_resource type="PackedScene" uid="uid://ior7g7a4capp" path="res://Assets/_Assets/Meshes/Counter_solid.gltf" id="4_rtcys"]
+[ext_resource type="PackedScene" uid="uid://r7lcqxffkd0j" path="res://Assets/_Assets/Meshes/Counter_hole.gltf" id="5_nrnow"]
+[ext_resource type="PackedScene" uid="uid://cxqlflnf5uk6o" path="res://Assets/_Assets/Meshes/Single door.gltf" id="6_rqywg"]
+[ext_resource type="Material" uid="uid://bp7kgl8ocogtp" path="res://Assets/_Assets/Materials/Black.mat.tres" id="7_i83eg"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_7l6ku"]
+resource_name = "Quad"
+_surfaces = [{
+"aabb": AABB(-0.5, -0.5, 0, 1, 1, 1e-05),
+"attribute_data": PackedByteArray(0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"format": 4119,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 1, 0, 3, 0, 2, 0),
+"primitive": 3,
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 191, 0, 0, 0, 191, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 255, 191, 0, 0, 0, 63, 0, 0, 0, 191, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 255, 191, 0, 0, 0, 191, 0, 0, 0, 63, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 255, 191, 0, 0, 0, 63, 0, 0, 0, 63, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 255, 191)
+}]
+
+[node name="ContainerCounter_Visual" type="Node3D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": ExtResource("1_hc1je")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = ExtResource("2_dqsrr")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+script = ExtResource("3_175gp")
+metadata/OpenClose = false
+metadata/guid_fileid_to_animation_name = {
+"7e9192aa6090c834589ba44fb1d962a7:7400000": "ContainerCounterClosed",
+"f8c1f20930651254f9dad32e4686d44d:7400000": "ContainerCounterOpenClose"
+}
+
+[node name="Counter_solid" parent="." instance=ExtResource("4_rtcys")]
+transform = Transform3D(1.65, 0, 0, 0, 1.5, 0, 0, 0, 1.65, 0, 0, 0)
+
+[node name="Counter_hole" parent="." instance=ExtResource("5_nrnow")]
+transform = Transform3D(1.65, 0, 0, 0, -6.99382e-08, 1.65, 0, -1.6, -7.21238e-08, -0.003, 0.68, 0.6302)
+
+[node name="Single door" parent="." instance=ExtResource("6_rqywg")]
+transform = Transform3D(-1.12277e-07, 2.15882, 6.77527e-08, 0, -9.4365e-08, 1.55, 2.5686, 9.4365e-08, 2.96156e-15, -0.002, 1.294, -0.406)
+
+[node name="ObjectSprite" type="Node3D" parent="Single door"]
+transform = Transform3D(8.57274e-07, -0.14, -5.21818e-07, -0.14, -8.57274e-07, 1.17995e-08, -1.18027e-08, 5.21818e-07, -0.14, 0.163903, -0.00231491, 0.0354828)
+
+[node name="SpriteRenderer" type="Node" parent="Single door/ObjectSprite"]
+metadata/unidot_keys = {
+"m_AdaptiveModeThreshold": 0.5,
+"m_AutoUVMaxAngle": 89,
+"m_AutoUVMaxDistance": 0.5,
+"m_CastShadows": 0,
+"m_Color": Color(1, 1, 1, 1),
+"m_CorrespondingSourceObject": [null, 0, null, null],
+"m_DrawMode": 0,
+"m_DynamicOccludee": 1,
+"m_Enabled": 1,
+"m_FlipX": 0,
+"m_FlipY": 0,
+"m_GameObject": [null, 5261771210811040880, null, null],
+"m_IgnoreNormalsForChartDetection": 0,
+"m_ImportantGI": 0,
+"m_LightProbeUsage": 1,
+"m_LightProbeVolumeOverride": [null, 0, null, null],
+"m_LightmapParameters": [null, 0, null, null],
+"m_MaskInteraction": 0,
+"m_Materials": [[null, 10754, "0000000000000000f000000000000000", 0]],
+"m_MinimumChartSize": 4,
+"m_MotionVectors": 1,
+"m_ObjectHideFlags": 0,
+"m_PrefabAsset": [null, 0, null, null],
+"m_PrefabInstance": [null, 0, null, null],
+"m_PreserveUVs": 0,
+"m_ProbeAnchor": [null, 0, null, null],
+"m_RayTraceProcedural": 0,
+"m_RayTracingMode": 0,
+"m_ReceiveGI": 1,
+"m_ReceiveShadows": 0,
+"m_ReflectionProbeUsage": 1,
+"m_RendererPriority": 0,
+"m_RenderingLayerMask": 1,
+"m_ScaleInLightmap": 1,
+"m_SelectedEditorRenderState": 0,
+"m_Size": Vector2(2.56, 2.03),
+"m_SortingLayer": 0,
+"m_SortingLayerID": 0,
+"m_SortingOrder": 0,
+"m_Sprite": [null, 21300000, "da2d04fe27b94e34ea0b624569b48a6f", 3],
+"m_SpriteSortPoint": 0,
+"m_SpriteTileMode": 0,
+"m_StaticBatchInfo": {
+"firstSubMesh": 0,
+"subMeshCount": 0
+},
+"m_StaticBatchRoot": [null, 0, null, null],
+"m_StaticShadowCaster": 0,
+"m_StitchLightmapSeams": 1,
+"m_WasSpriteAssigned": 1
+}
+
+[node name="Black" type="Node3D" parent="."]
+transform = Transform3D(-1.40465, -9.09459e-08, 3.82137e-15, 0, -4.5473e-08, -1, 1.22798e-07, -1.0403, 4.37114e-08, 0.003, 1.268, 0.0489)
+
+[node name="MeshRenderer" type="MeshInstance3D" parent="Black"]
+editor_description = "[MeshRenderer 23::9a9137fa2b035d34e881701d2c178192:5850129231471598083]"
+mesh = SubResource("ArrayMesh_7l6ku")
+surface_material_override/0 = ExtResource("7_i83eg")
+metadata/unidot_keys = {
+"m_AdditionalVertexStreams": [null, 0, null, null],
+"m_AutoUVMaxAngle": 89,
+"m_AutoUVMaxDistance": 0.5,
+"m_CastShadows": 1,
+"m_CorrespondingSourceObject": [null, 0, null, null],
+"m_DynamicOccludee": 1,
+"m_Enabled": 1,
+"m_GameObject": [null, 102550813385737453, null, null],
+"m_IgnoreNormalsForChartDetection": 0,
+"m_ImportantGI": 0,
+"m_LightProbeUsage": 1,
+"m_LightProbeVolumeOverride": [null, 0, null, null],
+"m_LightmapParameters": [null, 0, null, null],
+"m_Materials": [[null, 2100000, "90f0eed1477afe14b9e538e5bfa88cdc", 2]],
+"m_MinimumChartSize": 4,
+"m_MotionVectors": 1,
+"m_ObjectHideFlags": 0,
+"m_PrefabAsset": [null, 0, null, null],
+"m_PrefabInstance": [null, 0, null, null],
+"m_PreserveUVs": 0,
+"m_ProbeAnchor": [null, 0, null, null],
+"m_RayTraceProcedural": 0,
+"m_RayTracingMode": 2,
+"m_ReceiveGI": 1,
+"m_ReceiveShadows": 1,
+"m_ReflectionProbeUsage": 1,
+"m_RendererPriority": 0,
+"m_RenderingLayerMask": 1,
+"m_ScaleInLightmap": 1,
+"m_SelectedEditorRenderState": 3,
+"m_SortingLayer": 0,
+"m_SortingLayerID": 0,
+"m_SortingOrder": 0,
+"m_StaticBatchInfo": {
+"firstSubMesh": 0,
+"subMeshCount": 0
+},
+"m_StaticBatchRoot": [null, 0, null, null],
+"m_StaticShadowCaster": 0,
+"m_StitchLightmapSeams": 1
+}
+
+[editable path="Counter_solid"]
+[editable path="Counter_hole"]
+[editable path="Single door"]

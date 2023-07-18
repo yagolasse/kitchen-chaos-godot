@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfnglt1cbi6cv"]
+
+[ext_resource type="PackedScene" uid="uid://clyi1wi3qatro" path="res://Assets/_Assets/Meshes/Trash bin.gltf" id="1_hawb2"]
+
+[node name="TrashCounter_Visual" type="Node3D"]
+
+[node name="Trash bin" parent="." instance=ExtResource("1_hawb2")]
+transform = Transform3D(2.6, 0, 0, 0, 2.6, 0, 0, 0, 2.6, 0, 0, 0)
+
+[editable path="Trash bin"]

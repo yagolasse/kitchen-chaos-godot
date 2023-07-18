@@ -1,0 +1,15 @@
+[gd_resource type="AnimationLibrary" load_steps=3 format=3 uid="uid://2p61p0auwsst"]
+
+[ext_resource type="Animation" uid="uid://qprfxsp6mrin" path="res://Assets/_Assets/Animations/CuttingCounterIdle.anim.tres" id="1_wioy5"]
+[ext_resource type="Animation" uid="uid://bxg5ux1wnkftw" path="res://Assets/_Assets/Animations/CuttingCounterCut.anim.tres" id="2_jmotp"]
+
+[resource]
+resource_name = "CuttingCounter"
+_data = {
+"CuttingCounterCut": ExtResource("2_jmotp"),
+"CuttingCounterIdle": ExtResource("1_wioy5")
+}
+metadata/animation_guid_fileid_to_name = {
+"8e51262abb6b5fa4288bd453b7cfb7a6:7400000": "CuttingCounterIdle",
+"d7dc3ae032292ec4790e41ed41f65f1d:7400000": "CuttingCounterCut"
+}

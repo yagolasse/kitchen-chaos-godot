@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2o2djwhm22y0"]
+
+[ext_resource type="PackedScene" uid="uid://ccs7tnn4k67wl" path="res://Assets/_Assets/Meshes/Plate.gltf" id="1_vmf3f"]
+
+[node name="Plate_Visual" type="Node3D"]
+
+[node name="Plate" parent="." instance=ExtResource("1_vmf3f")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+
+[editable path="Plate"]
