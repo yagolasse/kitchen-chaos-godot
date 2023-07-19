@@ -1,28 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvae3f5dlq8xx"]
+[gd_scene load_steps=9 format=3 uid="uid://dvae3f5dlq8xx"]
 
 [ext_resource type="Material" uid="uid://c3kq7rwxbq86n" path="res://Assets/_Assets/Materials/Floor.mat.tres" id="1_e2i44"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_coxep"]
 [ext_resource type="PackedScene" uid="uid://l2bo6tl2f242" path="res://Assets/_Assets/PrefabsVisuals/PlayerVisual.prefab.tscn" id="2_fd4ug"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_hfor1"]
+[ext_resource type="Script" path="res://scripts/player_animator.gd" id="3_rkl0a"]
+[ext_resource type="PackedScene" uid="uid://bjbj6jyrap7pc" path="res://prefabs/clear_counter.tscn" id="5_vt864"]
 
 [sub_resource type="Environment" id="Environment_1vxd8"]
 ssao_enabled = true
 glow_enabled = true
+glow_bloom = 0.11
 adjustment_enabled = true
-adjustment_contrast = 1.08
-adjustment_saturation = 1.25
+adjustment_contrast = 1.33
+adjustment_saturation = 2.26
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6yjow"]
 radius = 0.623504
 height = 1.87803
 
-[node name="World" type="Node"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_hfor1"]
 
-[node name="Floor" type="CSGMesh3D" parent="."]
-transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
-mesh = SubResource("PlaneMesh_hfor1")
-material = ExtResource("1_e2i44")
+[node name="World" type="Node"]
 
 [node name="MainCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.694658, 0.71934, 0, -0.71934, 0.694658, 0, 21.5, 23.3)
@@ -32,14 +30,37 @@ near = 0.03
 far = 1000.0
 
 [node name="DirectionalLight" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.866025, 0.383022, -0.321394, 0, 0.642788, 0.766044, 0.5, -0.663414, 0.55667, 0, 3, 0)
+transform = Transform3D(0.866025, 0.383022, -0.321394, 0, 0.642788, 0.766044, 0.5, -0.663414, 0.556671, 0, 3, 0)
 shadow_enabled = true
 
 [node name="Player" type="CharacterBody3D" parent="."]
+collision_mask = 2
 script = ExtResource("2_coxep")
+speed = 10.0
+interaction_range = 1.0
+counter_collision_mask = 2
 
 [node name="Collider" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02578, 0)
 shape = SubResource("CapsuleShape3D_6yjow")
 
-[node name="PlayerVisual" parent="Player" instance=ExtResource("2_fd4ug")]
+[node name="PlayerVisual" parent="Player" node_paths=PackedStringArray("player") instance=ExtResource("2_fd4ug")]
+script = ExtResource("3_rkl0a")
+player = NodePath("..")
+
+[node name="Floor" type="CSGMesh3D" parent="."]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
+mesh = SubResource("PlaneMesh_hfor1")
+material = ExtResource("1_e2i44")
+
+[node name="ClearCounter" parent="." instance=ExtResource("5_vt864")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+
+[node name="ClearCounter2" parent="." instance=ExtResource("5_vt864")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -3)
+
+[node name="ClearCounter3" parent="." instance=ExtResource("5_vt864")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 5)
+
+[node name="ClearCounter4" parent="." instance=ExtResource("5_vt864")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.5, 0, 5)

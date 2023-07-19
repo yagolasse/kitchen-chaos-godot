@@ -15,6 +15,17 @@ run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Game="*res://scripts/game.gd"
+GameInput="*res://scripts/game_input.gd"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/unidot/plugin.cfg")
+
+[layer_names]
+
+3d_physics/layer_1="Player"
+3d_physics/layer_2="Counter"
+3d_physics/layer_3="Object"

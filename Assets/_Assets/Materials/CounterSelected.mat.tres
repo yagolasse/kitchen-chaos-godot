@@ -2,6 +2,7 @@
 
 [resource]
 resource_name = "CounterSelected"
+transparency = 1
 depth_draw_mode = 1
 albedo_color = Color(1, 1, 1, 0.0784314)
 uv1_scale = Vector3(1, 1, 0)

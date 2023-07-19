@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c65dpaflu3wwl"]
+[gd_scene load_steps=7 format=3 uid="uid://c65dpaflu3wwl"]
 
 [ext_resource type="ArrayMesh" uid="uid://cjajconjeal8o" path="res://Assets/_Assets/Meshes/Kitchen Counter.Counter.mesh" id="1_g4u46"]
+[ext_resource type="ArrayMesh" uid="uid://ccp8hs0qekb2j" path="res://Assets/_Assets/Meshes/Stove Counter.Cube_004.mesh" id="2_lja2r"]
 [ext_resource type="PackedScene" uid="uid://0681lto28q05" path="res://Assets/_Assets/Meshes/Frying Pan.gltf" id="2_txu6i"]
 [ext_resource type="Material" uid="uid://ydgq2felmatc" path="res://Assets/_Assets/Materials/StoveRedGlow.mat.tres" id="3_gbwqt"]
 
@@ -76,6 +77,7 @@ transform = Transform3D(1.67, 0, 0, 0, 1.67, 0, 0, 0, 1.67, -0.043, 1.431, 0.07)
 
 [node name="MeshRenderer" type="MeshInstance3D" parent="Stove"]
 editor_description = "[MeshRenderer 23::93af8b85a17635f40a5b76ed82a86c18:568043644244199763]"
+mesh = ExtResource("2_lja2r")
 metadata/unidot_keys = {
 "m_AdditionalVertexStreams": [null, 0, null, null],
 "m_AutoUVMaxAngle": 89,

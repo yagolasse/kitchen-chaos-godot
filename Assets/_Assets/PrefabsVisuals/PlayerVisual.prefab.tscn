@@ -19,16 +19,10 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = ExtResource("2_yktdl")
 anim_player = NodePath("../AnimationPlayer")
-active = true
 script = ExtResource("3_qh4yx")
-metadata/IsWalking = false
-metadata/guid_fileid_to_animation_name = {
-"1d9b9f03f848d714abb6b7ff43d4531b:7400000": "Idle",
-"686436e1b17e56340a28f218c36b9d68:7400000": "Walk"
-}
 
 [node name="Head" type="Node3D" parent="."]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 1.513, 0)
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 1.56081, 0)
 
 [node name="MeshRenderer" type="MeshInstance3D" parent="Head"]
 editor_description = "[MeshRenderer 23::1c5dda3c7cd3cf742afcade5419faeab:3294758250785316822]"
