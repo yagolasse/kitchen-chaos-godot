@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://b130hk4ntrfhq"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_rxjsn"]
+[ext_resource type="PackedScene" uid="uid://l2bo6tl2f242" path="res://Assets/_Assets/PrefabsVisuals/PlayerVisual.prefab.tscn" id="2_sn3rj"]
+[ext_resource type="Script" path="res://scripts/player_animator.gd" id="3_38pdl"]
+[ext_resource type="Script" path="res://scripts/kitchen_object_parent.gd" id="4_jnjmd"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6yjow"]
+radius = 0.623504
+height = 1.87803
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("kitchen_object_parent")]
+collision_mask = 2
+script = ExtResource("1_rxjsn")
+speed = 10.0
+interaction_range = 1.0
+kitchen_object_parent = NodePath("")
+counter_collision_mask = 2
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02578, 0)
+shape = SubResource("CapsuleShape3D_6yjow")
+
+[node name="PlayerVisual" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_sn3rj")]
+script = ExtResource("3_38pdl")
+player = NodePath("")
+
+[node name="KitchenObjectParent" type="Node" parent="." node_paths=PackedStringArray("position_reference")]
+script = ExtResource("4_jnjmd")
+position_reference = NodePath("")
+
+[node name="PlayerHandPosition" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 0.8)

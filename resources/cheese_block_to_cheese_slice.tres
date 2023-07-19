@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CuttingRecipeResource" load_steps=4 format=3 uid="uid://dlci8eqbmnjgq"]
+
+[ext_resource type="Resource" uid="uid://cvyh0sc6dsas1" path="res://resources/cheese_block_resource.tres" id="1_djfyf"]
+[ext_resource type="Script" path="res://scripts/cutting_recipe_resource.gd" id="1_lpauc"]
+[ext_resource type="Resource" uid="uid://dc6pacyrlxxjn" path="res://resources/cheese_slice_resource.tres" id="2_uqu7v"]
+
+[resource]
+script = ExtResource("1_lpauc")
+input = ExtResource("1_djfyf")
+output = ExtResource("2_uqu7v")

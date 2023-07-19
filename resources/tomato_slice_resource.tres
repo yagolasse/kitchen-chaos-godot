@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="KitchenObjectResource" load_steps=3 format=3 uid="uid://d07w5vbpnwrhb"]
+
+[ext_resource type="Script" path="res://scripts/kitchen_object_resource.gd" id="1_pr661"]
+[ext_resource type="Texture2D" uid="uid://dw5e3hh58r1on" path="res://Assets/_Assets/Textures/Icons/TomatoSlice.png" id="2_kqf65"]
+
+[resource]
+script = ExtResource("1_pr661")
+packed_scene_path = "res://packed_scenes/kitchen_objects/tomato_slice.tscn"
+sprite = ExtResource("2_kqf65")
+object_name = "Tomato Slice"

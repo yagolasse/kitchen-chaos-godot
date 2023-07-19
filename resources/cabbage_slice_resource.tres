@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="KitchenObjectResource" load_steps=3 format=3 uid="uid://dpu3whrqfhm4u"]
+
+[ext_resource type="Script" path="res://scripts/kitchen_object_resource.gd" id="1_e3ka2"]
+[ext_resource type="Texture2D" uid="uid://btgtbv2b4comq" path="res://Assets/_Assets/Textures/Icons/CabbageSlices.png" id="2_107no"]
+
+[resource]
+script = ExtResource("1_e3ka2")
+packed_scene_path = "res://packed_scenes/kitchen_objects/cabbage_slice.tscn"
+sprite = ExtResource("2_107no")
+object_name = "Cabbage Slice"

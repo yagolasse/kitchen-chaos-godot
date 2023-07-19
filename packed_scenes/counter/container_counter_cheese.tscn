@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bq4di6mnklind"]
+
+[ext_resource type="PackedScene" uid="uid://cckxdk1fpp5l5" path="res://packed_scenes/counter/container_counter.tscn" id="1_nnm6l"]
+[ext_resource type="Resource" uid="uid://cvyh0sc6dsas1" path="res://resources/cheese_block_resource.tres" id="2_ltxp7"]
+[ext_resource type="Texture2D" uid="uid://drn7usoim8ffm" path="res://Assets/_Assets/Textures/Icons/CheeseBlock.png" id="3_ttq0p"]
+
+[node name="ContainerCounterCheese" instance=ExtResource("1_nnm6l")]
+kitchen_object_resource = ExtResource("2_ltxp7")
+
+[node name="SpriteRenderer" parent="ContainerCounter_Visual/Single door/ObjectSprite" index="0"]
+texture = ExtResource("3_ttq0p")
+
+[node name="SpriteRenderer" parent="Selected/Single door/ObjectSprite" index="0"]
+texture = ExtResource("3_ttq0p")
+
+[editable path="ContainerCounter_Visual"]
+[editable path="Selected"]

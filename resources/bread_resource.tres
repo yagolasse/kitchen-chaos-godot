@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="KitchenObjectResource" load_steps=3 format=3 uid="uid://8gmk8deutma7"]
+
+[ext_resource type="Script" path="res://scripts/kitchen_object_resource.gd" id="1_2nku3"]
+[ext_resource type="Texture2D" uid="uid://bumpo8fsdcdch" path="res://Assets/_Assets/Textures/Icons/Bread.png" id="2_pbq0v"]
+
+[resource]
+script = ExtResource("1_2nku3")
+packed_scene_path = "res://packed_scenes/kitchen_objects/bread.tscn"
+sprite = ExtResource("2_pbq0v")
+object_name = "Bread"

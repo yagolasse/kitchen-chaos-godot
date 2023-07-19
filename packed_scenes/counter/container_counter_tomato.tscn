@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://yp4jgm0pxslr"]
+
+[ext_resource type="PackedScene" uid="uid://cckxdk1fpp5l5" path="res://packed_scenes/counter/container_counter.tscn" id="1_onptq"]
+[ext_resource type="Resource" uid="uid://bv0bmnnj4rmt2" path="res://resources/tomato_resource.tres" id="2_cyyfi"]
+
+[node name="ContainerCounterTomato" instance=ExtResource("1_onptq")]
+kitchen_object_resource = ExtResource("2_cyyfi")
+
+[editable path="ContainerCounter_Visual"]
+[editable path="Selected"]

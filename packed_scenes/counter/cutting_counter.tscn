@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://cups6w5lehy4"]
+
+[ext_resource type="PackedScene" uid="uid://bo0v54ggqcbod" path="res://packed_scenes/counter/base_counter.tscn" id="1_nwhp6"]
+[ext_resource type="PackedScene" uid="uid://bac8tr1mvfw7a" path="res://Assets/_Assets/PrefabsVisuals/CountersVisualsPrefabs/CuttingCounter_Visual.prefab.tscn" id="2_ht8h6"]
+[ext_resource type="Script" path="res://scripts/cutting_counter.gd" id="2_mqob1"]
+[ext_resource type="Resource" uid="uid://dtavbjpj11umg" path="res://resources/tomato_to_tomato_slice.tres" id="3_pcvko"]
+[ext_resource type="Script" path="res://scripts/selected_counter_visual.gd" id="4_8uv7o"]
+[ext_resource type="Resource" uid="uid://c2gds2m5o1i8k" path="res://resources/cabbage_to_cabbage_slice.tres" id="4_ktxya"]
+[ext_resource type="Script" path="res://scripts/kitchen_object_parent.gd" id="4_uw7fs"]
+[ext_resource type="Material" uid="uid://bh8ic6tumq66y" path="res://Assets/_Assets/Materials/CounterSelected.mat.tres" id="5_44bcy"]
+[ext_resource type="Resource" uid="uid://dlci8eqbmnjgq" path="res://resources/cheese_block_to_cheese_slice.tres" id="5_br6bt"]
+
+[node name="CuttingCounter" node_paths=PackedStringArray("kitchen_object_parent") instance=ExtResource("1_nwhp6")]
+script = ExtResource("2_mqob1")
+kitchen_object_parent = NodePath("KitchenObjectParent")
+cutting_recipe_resources = Array[Resource("res://scripts/cutting_recipe_resource.gd")]([ExtResource("3_pcvko"), ExtResource("4_ktxya"), ExtResource("5_br6bt")])
+
+[node name="KitchenObjectParent" type="Node" parent="." index="2" node_paths=PackedStringArray("position_reference")]
+script = ExtResource("4_uw7fs")
+position_reference = NodePath("../CounterTopPoint")
+
+[node name="CuttingCounter_Visual" parent="." index="3" instance=ExtResource("2_ht8h6")]
+
+[node name="Knife" parent="CuttingCounter_Visual" index="4"]
+transform = Transform3D(-0.878224, 0, 1.75223, 0, 1.96, 0, -1.75223, 0, -0.878224, 0.32, 1.284, 0.503)
+
+[node name="Plane_002" parent="CuttingCounter_Visual/Knife" index="0"]
+transform = Transform3D(0.885288, 0, -0.465043, 0, 1, 0, 0.465043, 0, 0.885288, 0, 0, 0)
+
+[node name="Selected" parent="." index="4" node_paths=PackedStringArray("parent", "visuals") instance=ExtResource("2_ht8h6")]
+script = ExtResource("4_8uv7o")
+parent = NodePath("..")
+visuals = [NodePath("KitchenCounter/MeshRenderer"), NodePath("Chopping Board/Cube_005"), NodePath("Knife/Plane_002")]
+
+[node name="MeshRenderer" parent="Selected/KitchenCounter" index="0"]
+visible = false
+surface_material_override/0 = ExtResource("5_44bcy")
+
+[node name="Cube_005" parent="Selected/Chopping Board" index="0"]
+visible = false
+surface_material_override/0 = ExtResource("5_44bcy")
+
+[node name="Knife" parent="Selected" index="4"]
+transform = Transform3D(-0.878224, 0, 1.75223, 0, 1.96, 0, -1.75223, 0, -0.878224, 0.32, 1.284, 0.503)
+
+[node name="Plane_002" parent="Selected/Knife" index="0"]
+transform = Transform3D(0.885288, 0, -0.465043, 0, 1, 0, 0.465043, 0, 0.885288, 0, 0, 0)
+visible = false
+surface_material_override/0 = ExtResource("5_44bcy")
+
+[editable path="CuttingCounter_Visual"]
+[editable path="CuttingCounter_Visual/Chopping Board"]
+[editable path="CuttingCounter_Visual/Knife"]
+[editable path="Selected"]
+[editable path="Selected/Chopping Board"]
+[editable path="Selected/Knife"]

@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://cckxdk1fpp5l5"]
+
+[ext_resource type="PackedScene" uid="uid://bo0v54ggqcbod" path="res://packed_scenes/counter/base_counter.tscn" id="1_r6w6l"]
+[ext_resource type="Script" path="res://scripts/container_counter.gd" id="2_84w50"]
+[ext_resource type="PackedScene" uid="uid://dd7uqm7mnb6yd" path="res://Assets/_Assets/PrefabsVisuals/CounterVisuals/ContainerCounter_Visual.tscn" id="2_l7mve"]
+[ext_resource type="Script" path="res://scripts/selected_counter_visual.gd" id="4_yq7gg"]
+[ext_resource type="Material" uid="uid://bh8ic6tumq66y" path="res://Assets/_Assets/Materials/CounterSelected.mat.tres" id="5_t65oj"]
+
+[node name="ContainerCounter" instance=ExtResource("1_r6w6l")]
+script = ExtResource("2_84w50")
+
+[node name="ContainerCounter_Visual" parent="." index="2" instance=ExtResource("2_l7mve")]
+
+[node name="Selected" parent="." index="3" node_paths=PackedStringArray("parent", "visuals") instance=ExtResource("2_l7mve")]
+script = ExtResource("4_yq7gg")
+parent = NodePath("..")
+visuals = [NodePath("Counter_solid/Counter_003"), NodePath("Counter_hole/Counter_001"), NodePath("Single door/Counter_004"), NodePath("Single door/ObjectSprite/SpriteRenderer"), NodePath("Black/MeshRenderer")]
+
+[node name="Counter_003" parent="Selected/Counter_solid" index="0"]
+visible = false
+surface_material_override/0 = ExtResource("5_t65oj")
+
+[node name="Counter_001" parent="Selected/Counter_hole" index="0"]
+visible = false
+surface_material_override/0 = ExtResource("5_t65oj")
+
+[node name="Counter_004" parent="Selected/Single door" index="0"]
+visible = false
+surface_material_override/0 = ExtResource("5_t65oj")
+
+[node name="SpriteRenderer" parent="Selected/Single door/ObjectSprite" index="0"]
+visible = false
+
+[node name="MeshRenderer" parent="Selected/Black" index="0"]
+visible = false
+surface_material_override/0 = ExtResource("5_t65oj")
+
+[editable path="ContainerCounter_Visual"]
+[editable path="Selected"]

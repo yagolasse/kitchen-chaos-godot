@@ -1,13 +1,15 @@
 extends CharacterBody3D
 class_name Player
 
-signal selected_counter_changed(counter: ClearCounter)
+signal selected_counter_changed(counter: BaseCounter)
 
 @export var speed: float
 @export var interaction_range: float
+@export var kitchen_object_parent: KitchenObjectParent
+
 @export_flags_3d_physics var counter_collision_mask: int
 
-var _last_selected_counter: ClearCounter
+var _last_selected_counter: BaseCounter
 var _last_movement_direction := Vector3.ZERO
 
 
@@ -17,6 +19,7 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	GameInput.interact_pressed.connect(_on_interact_pressed)
+	GameInput.interact_alternate_pressed.connect(_on_interact_alternate_pressed)
 
 
 func _physics_process(delta: float) -> void:
@@ -47,7 +50,12 @@ func _handle_movement() -> void:
 
 func _on_interact_pressed() -> void:
 	if _last_selected_counter:
-		_last_selected_counter.interact()
+		_last_selected_counter.interact(self)
+
+
+func _on_interact_alternate_pressed() -> void:
+	if _last_selected_counter:
+		_last_selected_counter.interact_alternate(self)
 
 
 func is_walking() -> bool:

@@ -4,7 +4,6 @@ const IDLE := "Idle"
 const WALK := "Walk"
 
 @export var player: Player
-
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 

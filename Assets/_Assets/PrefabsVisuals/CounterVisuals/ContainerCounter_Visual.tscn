@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpfkx1bw51ism"]
+[gd_scene load_steps=10 format=3 uid="uid://dd7uqm7mnb6yd"]
 
-[ext_resource type="AnimationLibrary" uid="uid://bqvwldhtmvcur" path="res://Assets/_Assets/Animations/ContainerCounter.library.tres" id="1_hc1je"]
-[ext_resource type="AnimationNodeBlendTree" uid="uid://cug2xr27yaoxa" path="res://Assets/_Assets/Animations/ContainerCounter.controller.tres" id="2_dqsrr"]
-[ext_resource type="Script" path="res://addons/unidot/runtime/anim_tree.gd" id="3_175gp"]
-[ext_resource type="PackedScene" uid="uid://ior7g7a4capp" path="res://Assets/_Assets/Meshes/Counter_solid.gltf" id="4_rtcys"]
-[ext_resource type="PackedScene" uid="uid://r7lcqxffkd0j" path="res://Assets/_Assets/Meshes/Counter_hole.gltf" id="5_nrnow"]
-[ext_resource type="PackedScene" uid="uid://cxqlflnf5uk6o" path="res://Assets/_Assets/Meshes/Single door.gltf" id="6_rqywg"]
-[ext_resource type="Material" uid="uid://bp7kgl8ocogtp" path="res://Assets/_Assets/Materials/Black.mat.tres" id="7_i83eg"]
+[ext_resource type="AnimationLibrary" uid="uid://bqvwldhtmvcur" path="res://Assets/_Assets/Animations/ContainerCounter.library.tres" id="1_c6ulx"]
+[ext_resource type="AnimationNodeBlendTree" uid="uid://cug2xr27yaoxa" path="res://Assets/_Assets/Animations/ContainerCounter.controller.tres" id="2_x85dn"]
+[ext_resource type="Script" path="res://addons/unidot/runtime/anim_tree.gd" id="3_y2qof"]
+[ext_resource type="ArrayMesh" uid="uid://bnmtff2rm7kqu" path="res://Assets/_Assets/Meshes/Counter_solid.Counter_003.mesh" id="4_h5sj3"]
+[ext_resource type="ArrayMesh" uid="uid://bqbxnomou0av6" path="res://Assets/_Assets/Meshes/Counter_hole.Counter_001.mesh" id="5_hamck"]
+[ext_resource type="ArrayMesh" uid="uid://ceb7mh2cyvoyw" path="res://Assets/_Assets/Meshes/Single door.Counter_004.mesh" id="6_nqm6q"]
+[ext_resource type="Texture2D" uid="uid://cjna268iahs21" path="res://Assets/_Assets/Textures/Icons/Tomato.png" id="7_tyui8"]
+[ext_resource type="Material" uid="uid://bp7kgl8ocogtp" path="res://Assets/_Assets/Materials/Black.mat.tres" id="9_osh2g"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_7l6ku"]
 resource_name = "Quad"
@@ -25,33 +26,45 @@ _surfaces = [{
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": ExtResource("1_hc1je")
+"": ExtResource("1_c6ulx")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = ExtResource("2_dqsrr")
+tree_root = ExtResource("2_x85dn")
 anim_player = NodePath("../AnimationPlayer")
 active = true
-script = ExtResource("3_175gp")
+script = ExtResource("3_y2qof")
 metadata/OpenClose = false
 metadata/guid_fileid_to_animation_name = {
 "7e9192aa6090c834589ba44fb1d962a7:7400000": "ContainerCounterClosed",
 "f8c1f20930651254f9dad32e4686d44d:7400000": "ContainerCounterOpenClose"
 }
 
-[node name="Counter_solid" parent="." instance=ExtResource("4_rtcys")]
+[node name="Counter_solid" type="Node3D" parent="."]
 transform = Transform3D(1.65, 0, 0, 0, 1.5, 0, 0, 0, 1.65, 0, 0, 0)
 
-[node name="Counter_hole" parent="." instance=ExtResource("5_nrnow")]
+[node name="Counter_003" type="MeshInstance3D" parent="Counter_solid"]
+mesh = ExtResource("4_h5sj3")
+
+[node name="Counter_hole" type="Node3D" parent="."]
 transform = Transform3D(1.65, 0, 0, 0, -6.99382e-08, 1.65, 0, -1.6, -7.21238e-08, -0.003, 0.68, 0.6302)
 
-[node name="Single door" parent="." instance=ExtResource("6_rqywg")]
-transform = Transform3D(-1.12277e-07, 2.15882, 6.77527e-08, 0, -9.4365e-08, 1.55, 2.5686, 9.4365e-08, 2.96156e-15, -0.002, 1.294, -0.406)
+[node name="Counter_001" type="MeshInstance3D" parent="Counter_hole"]
+mesh = ExtResource("5_hamck")
+
+[node name="Single door" type="Node3D" parent="."]
+transform = Transform3D(-1.12277e-07, 2.15882, 0, 1.12277e-07, 4.12483e-15, 1.55, 2.5686, 9.4365e-08, -6.77526e-08, 0, 1.337, -0.4)
+
+[node name="Counter_004" type="MeshInstance3D" parent="Single door"]
+transform = Transform3D(1, 0, 0, 3.55271e-15, 1, -3.55271e-15, 2.11758e-22, -7.10543e-15, 1, 0, 0, 0)
+mesh = ExtResource("6_nqm6q")
 
 [node name="ObjectSprite" type="Node3D" parent="Single door"]
-transform = Transform3D(8.57274e-07, -0.14, -5.21818e-07, -0.14, -8.57274e-07, 1.17995e-08, -1.18027e-08, 5.21818e-07, -0.14, 0.163903, -0.00231491, 0.0354828)
+transform = Transform3D(8.77857e-07, -0.12, -2.75612e-07, -0.12, -8.77856e-07, 2.95623e-09, -2.95824e-09, 2.75612e-07, -0.12, 0.171, 0, 0.0389156)
 
-[node name="SpriteRenderer" type="Node" parent="Single door/ObjectSprite"]
+[node name="SpriteRenderer" type="Sprite3D" parent="Single door/ObjectSprite"]
+transform = Transform3D(1, -4.09273e-12, -2.22374e-14, 1.36424e-12, 0.999999, -2.04636e-12, -4.1217e-15, -2.27374e-13, 1, 0, 0, 0)
+texture = ExtResource("7_tyui8")
 metadata/unidot_keys = {
 "m_AdaptiveModeThreshold": 0.5,
 "m_AutoUVMaxAngle": 89,
@@ -111,7 +124,7 @@ transform = Transform3D(-1.40465, -9.09459e-08, 3.82137e-15, 0, -4.5473e-08, -1,
 [node name="MeshRenderer" type="MeshInstance3D" parent="Black"]
 editor_description = "[MeshRenderer 23::9a9137fa2b035d34e881701d2c178192:5850129231471598083]"
 mesh = SubResource("ArrayMesh_7l6ku")
-surface_material_override/0 = ExtResource("7_i83eg")
+surface_material_override/0 = ExtResource("9_osh2g")
 metadata/unidot_keys = {
 "m_AdditionalVertexStreams": [null, 0, null, null],
 "m_AutoUVMaxAngle": 89,
@@ -154,7 +167,3 @@ metadata/unidot_keys = {
 "m_StaticShadowCaster": 0,
 "m_StitchLightmapSeams": 1
 }
-
-[editable path="Counter_solid"]
-[editable path="Counter_hole"]
-[editable path="Single door"]

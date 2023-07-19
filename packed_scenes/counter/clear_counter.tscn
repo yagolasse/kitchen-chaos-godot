@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://3wvkf47qtvkw"]
+
+[ext_resource type="PackedScene" uid="uid://bo0v54ggqcbod" path="res://packed_scenes/counter/base_counter.tscn" id="1_jsu3t"]
+[ext_resource type="Script" path="res://scripts/clear_counter.gd" id="2_3qy3q"]
+[ext_resource type="Script" path="res://scripts/kitchen_object_parent.gd" id="3_ifhqp"]
+[ext_resource type="PackedScene" uid="uid://d0rsth30uggpm" path="res://Assets/_Assets/PrefabsVisuals/CountersVisualsPrefabs/ClearCounter_Visual.prefab.tscn" id="4_m8i5l"]
+
+[node name="ClearCounter" node_paths=PackedStringArray("kitchen_object_parent") instance=ExtResource("1_jsu3t")]
+script = ExtResource("2_3qy3q")
+kitchen_object_parent = NodePath("KitchenObjectParent")
+
+[node name="KitchenObjectParent" type="Node" parent="." index="0" node_paths=PackedStringArray("position_reference")]
+script = ExtResource("3_ifhqp")
+position_reference = NodePath("../CounterTopPoint")
+
+[node name="ClearCounter_Visual" parent="." index="3" instance=ExtResource("4_m8i5l")]
+
+[node name="Selected" parent="ClearCounter_Visual" index="1" node_paths=PackedStringArray("parent")]
+parent = NodePath("../..")
+
+[editable path="ClearCounter_Visual"]

@@ -1,10 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://dvae3f5dlq8xx"]
+[gd_scene load_steps=14 format=3 uid="uid://dvae3f5dlq8xx"]
 
 [ext_resource type="Material" uid="uid://c3kq7rwxbq86n" path="res://Assets/_Assets/Materials/Floor.mat.tres" id="1_e2i44"]
-[ext_resource type="Script" path="res://scripts/player.gd" id="2_coxep"]
-[ext_resource type="PackedScene" uid="uid://l2bo6tl2f242" path="res://Assets/_Assets/PrefabsVisuals/PlayerVisual.prefab.tscn" id="2_fd4ug"]
-[ext_resource type="Script" path="res://scripts/player_animator.gd" id="3_rkl0a"]
-[ext_resource type="PackedScene" uid="uid://bjbj6jyrap7pc" path="res://prefabs/clear_counter.tscn" id="5_vt864"]
+[ext_resource type="PackedScene" uid="uid://b130hk4ntrfhq" path="res://packed_scenes/player.tscn" id="1_ewy87"]
+[ext_resource type="PackedScene" uid="uid://3wvkf47qtvkw" path="res://packed_scenes/counter/clear_counter.tscn" id="5_vt864"]
+[ext_resource type="Resource" uid="uid://cvyh0sc6dsas1" path="res://resources/cheese_block_resource.tres" id="6_pxh83"]
+[ext_resource type="Resource" uid="uid://bv0bmnnj4rmt2" path="res://resources/tomato_resource.tres" id="6_x27bx"]
+[ext_resource type="PackedScene" uid="uid://bq4di6mnklind" path="res://packed_scenes/counter/container_counter_cheese.tscn" id="7_63q75"]
+[ext_resource type="PackedScene" uid="uid://yp4jgm0pxslr" path="res://packed_scenes/counter/container_counter_tomato.tscn" id="8_hqfmx"]
+[ext_resource type="PackedScene" uid="uid://dsxypxy7wi5aw" path="res://packed_scenes/counter/container_counter_bread.tscn" id="8_yflp0"]
+[ext_resource type="PackedScene" uid="uid://b31q1vmufxfui" path="res://packed_scenes/counter/container_counter_cabbage.tscn" id="9_bsx0a"]
+[ext_resource type="PackedScene" uid="uid://bdx0hs666ul6j" path="res://packed_scenes/counter/container_counter_meat_patty_uncoocked.tscn" id="10_th77q"]
+[ext_resource type="PackedScene" uid="uid://cups6w5lehy4" path="res://packed_scenes/counter/cutting_counter.tscn" id="11_qdagy"]
 
 [sub_resource type="Environment" id="Environment_1vxd8"]
 ssao_enabled = true
@@ -13,10 +19,6 @@ glow_bloom = 0.11
 adjustment_enabled = true
 adjustment_contrast = 1.33
 adjustment_saturation = 2.26
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6yjow"]
-radius = 0.623504
-height = 1.87803
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_hfor1"]
 
@@ -33,20 +35,17 @@ far = 1000.0
 transform = Transform3D(0.866025, 0.383022, -0.321394, 0, 0.642788, 0.766044, 0.5, -0.663414, 0.556671, 0, 3, 0)
 shadow_enabled = true
 
-[node name="Player" type="CharacterBody3D" parent="."]
-collision_mask = 2
-script = ExtResource("2_coxep")
-speed = 10.0
-interaction_range = 1.0
-counter_collision_mask = 2
+[node name="Player" parent="." node_paths=PackedStringArray("kitchen_object_parent") instance=ExtResource("1_ewy87")]
+kitchen_object_parent = NodePath("KitchenObjectParent")
 
-[node name="Collider" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02578, 0)
-shape = SubResource("CapsuleShape3D_6yjow")
-
-[node name="PlayerVisual" parent="Player" node_paths=PackedStringArray("player") instance=ExtResource("2_fd4ug")]
-script = ExtResource("3_rkl0a")
+[node name="PlayerVisual" parent="Player" index="1" node_paths=PackedStringArray("player")]
 player = NodePath("..")
+
+[node name="KitchenObjectParent" parent="Player" index="2" node_paths=PackedStringArray("position_reference")]
+position_reference = NodePath("../PlayerHandPosition")
+
+[node name="PlayerHandPosition" parent="Player" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 1.1)
 
 [node name="Floor" type="CSGMesh3D" parent="."]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
@@ -55,12 +54,34 @@ material = ExtResource("1_e2i44")
 
 [node name="ClearCounter" parent="." instance=ExtResource("5_vt864")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+kitchen_object_resource = ExtResource("6_pxh83")
 
 [node name="ClearCounter2" parent="." instance=ExtResource("5_vt864")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -3)
+kitchen_object_resource = ExtResource("6_x27bx")
 
 [node name="ClearCounter3" parent="." instance=ExtResource("5_vt864")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 5)
 
 [node name="ClearCounter4" parent="." instance=ExtResource("5_vt864")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.5, 0, 5)
+
+[node name="CheeseContainerCounter" parent="." instance=ExtResource("7_63q75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3)
+
+[node name="TomatoContainerCounter" parent="." instance=ExtResource("8_hqfmx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -3)
+
+[node name="ContainerCounterBread" parent="." instance=ExtResource("8_yflp0")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.5, 0, 5)
+
+[node name="ContainerCounterCabbage" parent="." instance=ExtResource("9_bsx0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
+
+[node name="ContainerCounterMeatPattyUncoocked" parent="." instance=ExtResource("10_th77q")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3, 0, 5)
+
+[node name="CuttingCounter" parent="." instance=ExtResource("11_qdagy")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3, 0, 5)
+
+[editable path="Player"]
