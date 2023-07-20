@@ -16,11 +16,11 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_npiw8"]
 render_priority = 0
 shader = ExtResource("7_t0wli")
-shader_parameter/percentage_complete = 0.0
-shader_parameter/background_color = Color(0, 0, 0, 1)
+shader_parameter/percentage_complete = 1.0
 
-[node name="CuttingCounter" node_paths=PackedStringArray("kitchen_object_parent") instance=ExtResource("1_nwhp6")]
+[node name="CuttingCounter" node_paths=PackedStringArray("cutting_progress", "kitchen_object_parent") instance=ExtResource("1_nwhp6")]
 script = ExtResource("2_mqob1")
+cutting_progress = NodePath("CuttingProgress")
 kitchen_object_parent = NodePath("KitchenObjectParent")
 cutting_recipe_resources = Array[Resource("res://scripts/cutting_recipe_resource.gd")]([ExtResource("3_pcvko"), ExtResource("4_ktxya"), ExtResource("5_br6bt")])
 
@@ -28,16 +28,15 @@ cutting_recipe_resources = Array[Resource("res://scripts/cutting_recipe_resource
 script = ExtResource("4_uw7fs")
 position_reference = NodePath("../CounterTopPoint")
 
-[node name="CuttingProgress" type="Sprite3D" parent="." index="3" node_paths=PackedStringArray("cutting_counter")]
+[node name="CuttingProgress" type="Sprite3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 0.2, 0, 0, 0, 1, 0, 2.15973, 0)
 visible = false
 material_override = SubResource("ShaderMaterial_npiw8")
-modulate = Color(0.917647, 0.537255, 0, 1)
+modulate = Color(1, 1, 0, 1)
 pixel_size = 1.0
 texture = ExtResource("7_xwjyu")
 script = ExtResource("9_fuil2")
-interpolation_speed = 5
-cutting_counter = NodePath("..")
+interpolation_speed = 10
 
 [node name="CuttingCounter_Visual" parent="." index="4" instance=ExtResource("2_ht8h6")]
 

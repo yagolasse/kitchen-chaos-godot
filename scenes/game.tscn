@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://dvae3f5dlq8xx"]
+[gd_scene load_steps=15 format=3 uid="uid://dvae3f5dlq8xx"]
 
+[ext_resource type="Script" path="res://scripts/camera.gd" id="1_65xei"]
 [ext_resource type="Material" uid="uid://c3kq7rwxbq86n" path="res://Assets/_Assets/Materials/Floor.mat.tres" id="1_e2i44"]
 [ext_resource type="PackedScene" uid="uid://b130hk4ntrfhq" path="res://packed_scenes/player.tscn" id="1_ewy87"]
 [ext_resource type="PackedScene" uid="uid://3wvkf47qtvkw" path="res://packed_scenes/counter/clear_counter.tscn" id="5_vt864"]
@@ -30,6 +31,7 @@ environment = SubResource("Environment_1vxd8")
 fov = 20.0
 near = 0.03
 far = 1000.0
+script = ExtResource("1_65xei")
 
 [node name="DirectionalLight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.866025, 0.383022, -0.321394, 0, 0.642788, 0.766044, 0.5, -0.663414, 0.556671, 0, 3, 0)
